@@ -13,10 +13,10 @@
 export 'filters_config.dart';
 
 abstract class Config {
-  static const String appName = 'Dental Station';
-  static const String appIconPath = 'lib/assets/images/app_icon.jpg';
+  static const String appName = 'DentalStation';
+  static const String appIconPath = 'lib/assets/dental.png';
   static const String currency = 'Egp';
-  static const String currencySymbol = '\$';
+  static const String currencySymbol = 'Egp';
   static const String placeholderImageUrl = 'https://via.placeholder.com/100';
 
   /// Path for the place holder image in the application assets directory
@@ -33,7 +33,7 @@ abstract class Config {
   // the option will not be shown to the user.
 
   /// Must be a valid URL
-  static const String contactUsUrl = 'https://www.example.com';
+  static const String contactUsUrl = 'https://www.dentalstation.com';
 
   /// This should be a valid phone number
   static const String contactUsPhone = '01553969051';
@@ -90,12 +90,12 @@ abstract class Config {
 
   /// Flag to set the visibility of the categories horizontal list
   /// in the home page
-  static const bool showCategoriesInHome = true;
+  static const bool showCategoriesInHome = false;
 
   /// Possible values:
   /// • grid
   /// • list-horizontal
-  static const String categoriesHomeScreenLayout = 'list-horizontal';
+  static const String categoriesHomeScreenLayout = 'grid';
 
   /// Flag to change the border radius of each item in the categories
   /// list in the home screen
@@ -107,7 +107,7 @@ abstract class Config {
   /// Home Screen Categories List
   ///
   /// Recommended value is 5
-  static const int categoriesHomeScreenGridLayoutCrossAxisCount = 5;
+  static const int categoriesHomeScreenGridLayoutCrossAxisCount = 4;
 
   /// Flag to set the visibility of the categories filter in
   /// search filter modal
@@ -128,8 +128,7 @@ abstract class Config {
   /// shown under the App Bar of the CategoriesProductsScreen which
   /// is the screen shown to the user when they select a category to
   /// sort the products.
-  static const bool showCategoriesHorizontalListBelowCategorisedProductsAppBar =
-      true;
+  static const bool showCategoriesHorizontalListBelowCategorisedProductsAppBar = false;
 
   //**********************************************************
   // Product Screen
@@ -170,7 +169,7 @@ abstract class Config {
 
   /// Flag to enable or disable the vendor information display
   /// in the product screen.
-  static const bool productScreenShowVendorTile = false;
+  static const bool productScreenShowVendorTile = true;
 
   /// Flag to set the layout of the vendor tile in product screen
   ///
@@ -241,7 +240,7 @@ abstract class Config {
 
   /// Flag to show / hide the customers downloadable or virtual
   /// products.
-  static const bool showCustomerDownloadsListTile = true;
+  static const bool showCustomerDownloadsListTile = false;
 
   //**********************************************************
   // WooCommerce Points and Rewards plugin configuration
@@ -263,7 +262,7 @@ abstract class Config {
 
   /// Flag to decide whether points will be displayed in the Product's
   /// screen
-  static const bool showPointsInProductScreen = false;
+  static const bool showPointsInProductScreen = true;
 
   //**********************************************************
   // Variation Swatches for WooCommerce Settings
@@ -308,7 +307,7 @@ abstract class FirebaseDynamicLinksConfig {
 
   /// The following package name and bundle id are the same as you
   /// used while setting up your ios and android apps on firebase.
-  static const String androidPackageName = 'com.aniketmalik.ecommerce_store';
+  static const String androidPackageName = 'com.dentalstation.androidapp';
   static const String iOSBundleId = 'com.aniketmalik.ecommerceStore';
 
   /// Your app store id

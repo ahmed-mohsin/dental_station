@@ -90,8 +90,8 @@ dev_dependencies:
 
 flutter_icons:
   android: true
-  ios: true
-  image_path: "lib/assets/images/app_icon.jpg"
+  ios: false
+  image_path: "lib/assets/dental.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

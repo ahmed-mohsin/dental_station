@@ -11,8 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="io.flutter.app.FlutterApplication"
-        android:label="WooStore Pro"
+        android:name="${applicationName}"
+        android:label="Dental Station"
         android:icon="@mipmap/ic_launcher"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"

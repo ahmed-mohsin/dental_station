@@ -602,6 +602,13 @@ class PSVendor extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
+                'Vendor Name :',
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
                 storeName,
                 style: disableCustomTextStyle
                     ? const TextStyle(

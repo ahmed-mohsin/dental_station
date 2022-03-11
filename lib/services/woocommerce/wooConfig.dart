@@ -18,9 +18,9 @@
 ///
 abstract class WooConfig {
   /// Your wordpress url
-  static const String wordPressUrl = 'https://example.com';
+  static const String wordPressUrl = 'https://dentalstation.net/';
 
   // PLEASE ADD KEYS WITH ONLY READ PERMISSION
-  static const String consumerKey = 'YOUR CONSUMER KEY';
-  static const String consumerSecret = 'YOUR CONSUMER SECRET KEY';
+  static const String consumerKey = 'ck_66824d2306c7425f1f1ebf597322654c4f442662';
+  static const String consumerSecret = 'cs_31e7355c007434299b49bfcc8a441e77b028e861';
 }
