@@ -188,7 +188,7 @@ class CategoriesContent extends StatelessWidget {
                                     //                 ['dubCat'][i2]['name'])));
                                   },
                                   child: new Container(
-                                    padding: ThemeGuide.padding5,
+                                    //padding: ThemeGuide.padding5,
                                     decoration: BoxDecoration(
                                       color: theme.backgroundColor,
                                       borderRadius: ThemeGuide.borderRadius10,
@@ -198,7 +198,7 @@ class CategoriesContent extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         Expanded(
-                                          flex: 2,
+                                          flex: 3,
                                           child: ExtendedCachedImage(
                                             imageUrl: catList[i]["subCat"]
                                                 [index]['dubCat'][i2]['image'],
@@ -206,16 +206,19 @@ class CategoriesContent extends StatelessWidget {
                                           ),
                                         ),
                                         const Flexible(
-                                            child: SizedBox(height: 16)),
+                                            child: SizedBox(height: 8)),
                                         Flexible(
-                                          child: Text(
-                                            catList[i]["subCat"][index]
-                                                ['dubCat'][i2]['name'],
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w600,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                                            child: Text(
+                                              catList[i]["subCat"][index]
+                                                  ['dubCat'][i2]['name'],
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
                                             ),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ],
@@ -254,19 +257,19 @@ List catList = [
             "id": "1",
             "name": "Composite",
             "image":
-                "https://images.dentalkart.com/media/catalog/product/m/e/metaceraseal10.jpg",
+                "https://dentalstation.net/wp-content/uploads/2022/03/MEDICLUS-ANY-COM-FLOW-COMPOSITE-2G.jpeg",
           },
           {
             "id": "2",
             "name": "Acid Etch&bonding Agents",
             "image":
-                "https://images.dentalkart.com/media/catalog/product/m/e/metaceraseal10.jpg",
+                "https://dentalstation.net/wp-content/uploads/2022/03/BE-ETCH-37-5ML.png",
           },
           {
             "id": "3",
             "name": "Amalgam",
             "image":
-                "https://images.dentalkart.com/media/catalog/product/m/e/metaceraseal10.jpg",
+                "https://dentalstation.net/wp-content/uploads/2022/03/AMALGAM-SOLALOY-SPILL-2-50PCS.jpg",
           },
           {
             "id": "4",
