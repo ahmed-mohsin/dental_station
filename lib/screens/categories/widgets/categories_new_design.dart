@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:woostore_pro/screens/categories/widgets/verticalTabs.dart';
 
+import '../../../shared/image/extendedCachedImage.dart';
 import '../../../themes/colors.dart';
+import '../../../themes/themeGuide.dart';
 
 class CategoriesNewDesign extends StatelessWidget {
   const CategoriesNewDesign({
@@ -36,143 +38,26 @@ class _CategoriesState extends State<Categories> {
     super.initState();
     for (int i = 0; i < catList.length; i++) {
       tabs.add(Tab(
-        child: Container(
-          height: 30,
-          width: double.infinity,
-          child: Center(
-            child: Text(
-              catList[i]["name"],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'CeraRound',
+        child: Align(alignment:Alignment.centerLeft ,
+          child: Container(
+
+            //width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 4),
+              child: Text(
+                catList[i]["name"],
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'CeraRound',
+                ),
               ),
             ),
           ),
         ),
       ));
-      content.add(Container(
-        //color: AppColors.lightGrey,
-        //            itemCount: catList[i]["subCat"].length,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 3, left: 2, right: 2, bottom: 4),
-          child: ListView.builder(
-              shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
-              itemCount: catList[i]["subCat"].length,
-              itemBuilder: (x, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(
-                            color: Colors.grey[300],
-                          )),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 6, left: 6, right: 6),
-                            child: Text(
-                              catList[i]["subCat"][index]['name'],
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'CeraRound',
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.grey[300],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 2),
-                            child: GridView.builder(
-                              shrinkWrap: true,
-                              physics: BouncingScrollPhysics(),
-                              itemCount:
-                                  catList[i]["subCat"][index]['dubCat'].length,
-                              gridDelegate:
-                                  new SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2),
-                              itemBuilder: (BuildContext context, int i2) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: InkWell(
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (_) =>
-                                      //             SingleSubCatScreen(catList[i]
-                                      //                     ["subCat"][index]
-                                      //                 ['dubCat'][i2]['name'])));
-                                    },
-                                    child: new Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            child: Container(
-                                              color: Colors.white,
-                                              child: CachedNetworkImage(
-                                                height: double.infinity,
-                                                width: double.infinity,
-                                                imageUrl: catList[i]["subCat"]
-                                                        [index]['dubCat'][i2]
-                                                    ['image'],
-                                                //placeholder: (context, url) => CircularProgressIndicator(),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        Icon(Icons.error),
-                                                fit: BoxFit.fill,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Text(
-                                              catList[i]["subCat"][index]
-                                                  ['dubCat'][i2]['name'],
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'CeraRound',
-                                              ),
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.fade,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      // child: new Text(data[index]
-                                      //     ['image']), //just for testing, will fill with image later
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      )),
-                );
-              }),
-        ),
-      ));
+      content.add(CategoriesContent(i: i));
     }
   }
 
@@ -185,8 +70,8 @@ class _CategoriesState extends State<Categories> {
         child: VerticalTabs(
           tabTextStyle: TextStyle(),
           tabsShadowColor: Colors.grey[200],
-          indicatorColor: Colors.deepOrange,
-          selectedTabBackgroundColor: Colors.teal.shade50,
+          indicatorColor: Colors.blue.shade900,
+          selectedTabBackgroundColor: AppColors.backgroundLight,
           backgroundColor: Colors.indigoAccent,
           tabBackgroundColor: Colors.white,
           indicatorSide: IndicatorSide.start,
@@ -194,7 +79,8 @@ class _CategoriesState extends State<Categories> {
           indicatorWidth: 5,
           initialIndex: 0,
           contentScrollAxis: Axis.vertical,
-          tabsWidth: 120,disabledChangePageFromContentView: true,
+          tabsWidth: 120,
+          disabledChangePageFromContentView: true,
           tabs: tabs,
           contents: content,
         ),
@@ -222,6 +108,130 @@ class _CategoriesState extends State<Categories> {
             style: TextStyle(fontSize: 15, color: Colors.black87),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CategoriesContent extends StatelessWidget {
+  const CategoriesContent({
+    Key key,
+    @required this.i,
+  }) : super(key: key);
+
+  final int i;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      color: AppColors.backgroundLight,
+      //            itemCount: catList[i]["subCat"].length,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 4),
+        child: ListView.builder(
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
+            itemCount: catList[i]["subCat"].length,
+            itemBuilder: (x, index) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.backgroundLight,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          //color: Colors.teal.shade50,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 4),
+                            child: Text(
+                              catList[i]["subCat"][index]['name'],
+                              style: TextStyle(
+                                color: Colors.black,fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'CeraRound',
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Divider(
+                        //   color: Colors.grey[300],
+                        // ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 4, vertical: 4),
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            itemCount:
+                                catList[i]["subCat"][index]['dubCat'].length,
+                            gridDelegate:
+                                new SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemBuilder: (BuildContext context, int i2) {
+                              return Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: InkWell(
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (_) =>
+                                    //             SingleSubCatScreen(catList[i]
+                                    //                     ["subCat"][index]
+                                    //                 ['dubCat'][i2]['name'])));
+                                  },
+                                  child: new Container(
+                                    padding: ThemeGuide.padding5,
+                                    decoration: BoxDecoration(
+                                      color: theme.backgroundColor,
+                                      borderRadius: ThemeGuide.borderRadius10,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          flex: 2,
+                                          child: ExtendedCachedImage(
+                                            imageUrl: catList[i]["subCat"]
+                                                [index]['dubCat'][i2]['image'],
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                        const Flexible(
+                                            child: SizedBox(height: 16)),
+                                        Flexible(
+                                          child: Text(
+                                            catList[i]["subCat"][index]
+                                                ['dubCat'][i2]['name'],
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    // child: new Text(data[index]
+                                    //     ['image']), //just for testing, will fill with image later
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      ],
+                    )),
+              );
+            }),
       ),
     );
   }
