@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:woostore_pro/screens/categories/widgets/categories_new_design.dart';
 
 import '../../constants/config.dart';
 import '../../generated/l10n.dart';
@@ -35,15 +36,17 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(lang.categories),
       ),
-      body: ChangeNotifierProvider<CategoriesProvider>.value(
-        value: LocatorService.categoriesProvider(),
-        child: isDataAvailable
-            ? CSLayoutUtils.renderLayout(Config.categoriesScreenLayout)
-            : const _BodyWithoutData(),
-      ),
+      // body: ChangeNotifierProvider<CategoriesProvider>.value(
+      //   value: LocatorService.categoriesProvider(),
+      //   child: isDataAvailable
+      //       ? CSLayoutUtils.renderLayout(Config.categoriesScreenLayout)
+      //       : const _BodyWithoutData(),
+      // ),
+      body: CategoriesNewDesign(),
     );
   }
 }
+
 
 class _BodyWithoutData extends StatelessWidget {
   const _BodyWithoutData({Key key}) : super(key: key);
