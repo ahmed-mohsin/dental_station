@@ -9,7 +9,7 @@
 // Dissemination of this information or reproduction of this material
 // is strictly forbidden unless prior written permission is obtained from
 // Aniket Malik.
-
+import 'package:woocommerce/woocommerce.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +50,10 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(

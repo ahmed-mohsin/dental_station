@@ -49,7 +49,6 @@ class CategoryProductsProvider extends BaseProvider with WooFiltersMixin {
     Dev.info(
         'Selected [WooProductCategory]\n\nId: ${value?.id}\nName: ${value?.name}\nChildren list length ${childrenCategories.length}');
     _initialCategory = value;
-
     _currentCategory = value;
     _childrenCategories = childrenCategories;
     _searchCategory = value;
@@ -138,7 +137,7 @@ class CategoryProductsProvider extends BaseProvider with WooFiltersMixin {
     );
 
     Dev.info(
-      'Current Category: ${_currentCategory?.name}\nSearch Category: ${_searchCategory?.name}',
+      'Current Category: ${_currentCategory?.name}\nSearch Category: ${_searchCategory?.name}::category id :: ${_searchCategory?.id}',
     );
 
     if (searchCategory == null || searchCategory?.id == null) {

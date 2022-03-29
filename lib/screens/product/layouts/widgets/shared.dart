@@ -465,9 +465,11 @@ class PSRenderCategories extends StatelessWidget {
                 }
                 return GestureDetector(
                   onTap: () {
+
                     NavigationController.navigator.push(
                       CategorisedProductsRoute(category: e),
                     );
+
                   },
                   child: Text(
                     '${e.name ?? lang.notAvailable} ',

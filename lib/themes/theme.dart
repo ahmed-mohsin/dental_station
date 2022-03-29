@@ -26,6 +26,13 @@ abstract class CustomTheme {
 
   // Contains the information about the light theme
   static ThemeData lightTheme = ThemeData.light().copyWith(
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CustomPageTransitionBuilder(),
+        TargetPlatform.iOS: CustomPageTransitionBuilder(),
+      },
+    ),
+
     colorScheme: const ColorScheme.light(
       primary: AppColors.primary,
       primaryVariant: AppColors.primaryDark,
@@ -139,6 +146,13 @@ abstract class CustomTheme {
 
   // Contains the information about the dark theme
   static ThemeData darkTheme = ThemeData.dark().copyWith(
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CustomPageTransitionBuilder(),
+        TargetPlatform.iOS: CustomPageTransitionBuilder(),
+      },
+    ),
+
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primaryDark,
       primaryVariant: AppColors.primaryDark,
@@ -285,4 +299,51 @@ abstract class DarkTheme {
   static const Color blueShadow = Color(0xFF4053BD);
   static const Color greenishBlue = Color(0xFF42D3D4);
   static const Color lightRed = Color(0xFFF09A8A);
+}
+
+
+
+class CustomRoute<T> extends MaterialPageRoute<T> {
+  CustomRoute({
+     WidgetBuilder builder,
+    RouteSettings settings,
+  }) : super(
+    builder: builder,
+    settings: settings,
+  );
+
+  @override
+  Widget buildTransitions(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    if (settings.name == '/') {
+      return child;
+    }
+    return FadeTransition(
+      opacity: animation,
+      child: child,
+    );
+  }
+}
+
+class CustomPageTransitionBuilder extends PageTransitionsBuilder {
+  @override
+  Widget buildTransitions<T>(
+      PageRoute<T> route,
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    if (route.settings.name == '/') {
+      return child;
+    }
+    return FadeTransition(
+      opacity: animation,
+      child: child,
+    );
+  }
 }

@@ -74,6 +74,8 @@ class _RowItem extends StatelessWidget {
           );
           return;
         }
+
+
         NavigationController.navigator.push(
           CategorisedProductsRoute(category: category),
         );
